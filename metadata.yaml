@@ -1,0 +1,26 @@
+# Copyright 2023 Canonical Ltd.
+# See LICENSE file for licensing details.
+name: identity-platform-login-ui-charm
+assumes:
+  - k8s-api
+
+
+summary: Operator for Identity platform UI backend and proxy
+
+description: |
+  Operator for Identity platform UI backend and proxy
+
+containers:
+  login_ui:
+    resource: login-ui-image
+
+# This field populates the Resources tab on Charmhub.
+resources:
+  login-ui-image:
+    type: oci-image
+    description: OCI image for login-ui
+    upstream-source: ghcr.io/canonical/identity-platform-login-ui:latest
+
+requires:
+  public-ingress:
+    interface: ingress
